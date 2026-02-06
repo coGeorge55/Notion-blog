@@ -7,7 +7,7 @@ const BLOG = {
     process.env.NOTION_PAGE_ID ||
     '2ff2aa09346581568145ff44db7e7020',
 
-  SUB_PATH: process.env.NEXT_PUBLIC_SUB_PATH || '/Notion-blog',
+  SUB_PATH:'/Notion-blog',
   
   THEME: process.env.NEXT_PUBLIC_THEME || 'simple', // 当前主题，在themes文件夹下可找到所有支持的主题；主题名称就是文件夹名，例如 example,fukasawa,gitbook,heo,hexo,landing,matery,medium,next,nobelium,plog,simple
   LANG: process.env.NEXT_PUBLIC_LANG || 'zh-CN', // e.g 'zh-CN','en-US'  see /lib/lang.js for more.
