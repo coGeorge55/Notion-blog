@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 于:
   push:
-    branches: [ main, master ]
+    分支: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -33,7 +33,7 @@ jobs:
         run: |
           npm run build
           npm run export
-          touch out/.nojekyll  # <---【关键修改】就是这行！添加 .nojekyll 文件防止 _next 文件夹被忽略
+          touch out/.nojekyll  # <---添加 .nojekyll 文件防止 _next 文件夹被忽略
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
