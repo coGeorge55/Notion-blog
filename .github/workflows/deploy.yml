@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 于:
   push:
-    分支: [ main, master ]
+    branches: [ main, master ]
   workflow_dispatch:
 
 permissions:
@@ -28,12 +28,15 @@ jobs:
 
       - name: Build and Export
         env:
-          # 读取 Secrets 里的 ID，如果没有配置 Secrets，会自动读取 blog.config.js 里的
+          # 【修复点1】强制设置子路径环境变量，确保构建时知道自己在子目录
+          NEXT_PUBLIC_SUB_PATH: '/Notion-blog'
+          # 读取 Secrets
           NOTION_PAGE_ID: ${{ secrets.NOTION_PAGE_ID }}
         run: |
           npm run build
           npm run export
-          touch out/.nojekyll  # <---添加 .nojekyll 文件防止 _next 文件夹被忽略
+          # 【修复点2】生成 .nojekyll 文件，防止 GitHub 忽略 _next 资源文件夹
+          touch out/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
