@@ -301,6 +301,9 @@ const nextConfig = {
     const pages = { ...defaultPathMap }
     delete pages['/sitemap.xml']
     delete pages['/auth']
+    // 【修复】忽略会导致构建失败的页面
+    delete pages['/oops']
+    delete pages['/404']
     return pages
   },
   publicRuntimeConfig: {
